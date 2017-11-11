@@ -50,6 +50,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-touchspin/3.1.2/jquery.bootstrap-touchspin.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.22.1/js/patternfly.min.js"></script>
+    <script src="js/pdfmake.min.js"></script>
+    <script src="js/vfs_fonts.js"></script>
 </head>
 
 <body>
@@ -221,24 +223,35 @@
             maxboostedstep: 10
         });
 
-        $(function() {
-            if (!Modernizr.inputtypes.date) {
-                $('input[type=date]').datepicker({
-                    dateFormat: 'yy-mm-dd'
-                });
+
+
+        var docDefinition = {
+            content: [{
+                    text: 'Boleta de Pago',
+                    style: 'header'
+                },
+                'Prueba de boleta de pago...', {
+                    text: 'Another text',
+                    style: 'anotherStyle'
+                }, {
+                    text: 'Multiple styles applied',
+                    style: ['header', 'anotherStyle']
+                }
+            ],
+
+            styles: {
+                header: {
+                    fontSize: 22,
+                    bold: true
+                },
+                anotherStyle: {
+                    italics: true,
+                    alignment: 'right'
+                }
             }
-        });
+        };
 
-
-
-
-
-        /*i.on('change', function() {
-            //alert("Change");
-            event.preventDefault()
-        });*/
-
-
+        pdfMake.createPdf(docDefinition).download();
     });
 </script>
 
