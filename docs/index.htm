@@ -407,6 +407,12 @@
 
     <hr/>
 
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-warning" id="BtnCargaEjemplo">
+                <span class="glyphicon glyphicon-check" aria-hidden="true"></span>&nbsp; &nbsp; Carga Ejemplo &nbsp; &nbsp;
+            </button>
+    </div>
+
     <div class="btn-group pull-right" role="group">
         <button type="button" class="btn btn-primary">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp; &nbsp; Limpiar &nbsp; &nbsp;
@@ -568,12 +574,13 @@
                 },
 
                 content: [{
-                        text: 'Boleta de Pago',
+                        text: dato.empresa,
                         style: 'header'
                     },
 
                     {
-                        text: '================================',
+                        layout: 'lightHorizontalLines',
+                        text: dato.empresadireccion,
                         fontSize: 8,
                         bold: true,
                         margin: [0, 0, 0, 20]
@@ -601,6 +608,30 @@
                     },
 
                     {
+                        columns: [{
+                            width: '30%',
+                            text: 'Rut :',
+                            style: 'etiqueta'
+                        }, {
+                            width: '*',
+                            text: dato.rut
+                        }],
+                        columnGap: 10
+                    },
+
+                    {
+                        columns: [{
+                            width: '30%',
+                            text: 'Cargo :',
+                            style: 'etiqueta'
+                        }, {
+                            width: '*',
+                            text: dato.cargo
+                        }],
+                        columnGap: 10
+                    },
+
+                    {
                         text: 'Detalle del Pago',
                         margin: [40, 40, 40, 20],
                         fontSize: 16,
@@ -622,22 +653,33 @@
                                 [{
                                     text: 'Sueldo Base',
                                     bold: true
-                                }, '0', '0'],
+                                }, dato.sueldobase, '0'],
 
                                 [{
-                                    text: 'Gratificacion Legal',
+                                    text: 'Cotiz. A.F.P - ' + dato.afp,
                                     bold: true
-                                }, '0', '0'],
+                                }, '0', dato.valorafp],
 
                                 [{
-                                    text: 'Cotiz. A.F.P',
+                                    text: 'Isapre - ' + dato.isapre,
                                     bold: true
-                                }, '0', '0'],
+                                }, '0', dato.valorisapre],
 
                                 [{
-                                    text: 'Isapre',
+                                    text: 'Gratificacion',
                                     bold: true
-                                }, '0', '0']
+                                }, dato.gratificacion, '0'],
+
+                                [{
+                                    text: 'Bonos',
+                                    bold: true
+                                }, dato.bonos, '0'],
+
+                                [{
+                                    text: 'Descuentos base',
+                                    bold: true
+                                }, '0', dato.descuentosbase]
+
                             ]
                         }
                     }
@@ -670,11 +712,38 @@
             pdfMake.createPdf(docDefinition).download("BoletaPago.pdf");
         }
 
+
+        $("#BtnCargaEjemplo").click(function() {
+            $("#inputNombre").val('Pedro Perez Perez');
+            $("#inputRut").val('12345678-9');
+            $("#inputEmpresa").val('Empresa Ejemplo SA');
+            $("#inputDireccion").val('Camino del exito n° 300');
+            $("#inputOcupacion").val('El mejor cargo que existe');
+            $("#inputSueldoBase").val("2400000");
+            $("#selectAFP").val('Cuprum');
+            $("#selectIsapre").val('Banmedica');
+            $("#inputGratificacion").val("300000");
+            $("#inputBono").val("250000");
+            $("#inputDescuentos").val("600000");
+        });
+
         $("#BtnBoleta").click(function() {
-            console.log($("#inputNombre").text());
-            console.log($("#inputNombre").val());
             var Persona = {
-                nombre: $("#inputNombre").val()
+                nombre: $("#inputNombre").val(),
+                rut: $("#inputRut").val(),
+                empresa: $("#inputEmpresa").val(),
+                empresadireccion: $("#inputDireccion").val(),
+                cargo: $("#inputOcupacion").val(),
+                sueldobase: $("#inputSueldoBase").val(),
+                afp: $("#selectAFP").val(),
+                isapre: $("#selectIsapre").val(),
+
+                valorafp: $("#inputSueldoBase").val() * ($("#inputPorcAFP").val() / 100),
+                valorisapre: $("#inputSueldoBase").val() * ($("#inputPorcIsapre").val() / 100),
+
+                gratificacion: $("#inputGratificacion").val(),
+                bonos: $("#inputBono").val(),
+                descuentosbase: $("#inputDescuentos").val()
             }
 
             console.log(Persona);
