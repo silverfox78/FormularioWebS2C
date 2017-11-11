@@ -678,8 +678,35 @@
                                 [{
                                     text: 'Descuentos base',
                                     bold: true
-                                }, '0', dato.descuentosbase]
+                                }, '0', dato.descuentosbase],
 
+                                [{
+                                    text: 'Cargas familiares',
+                                    bold: true
+                                }, '0', dato.cargas],
+
+                                ['', '', '']
+                            ]
+                        }
+                    },
+
+                    {
+                        layout: 'lightHorizontalLines',
+
+                        table: {
+                            headerRows: 1,
+                            widths: ['80%', '*'],
+
+                            body: [
+                                [{
+                                    text: 'MONTO LIQUIDO',
+                                    fontSize: 16,
+                                    bold: true
+                                }, {
+                                    text: dato.montoliquido,
+                                    fontSize: 16,
+                                    bold: true
+                                }]
                             ]
                         }
                     }
@@ -712,10 +739,22 @@
             pdfMake.createPdf(docDefinition).download("BoletaPago.pdf");
         }
 
+        function addCommas(nStr) {
+            nStr += '';
+            x = nStr.split('.');
+            x1 = x[0];
+            x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+            }
+            return x1 + x2;
+        }
 
         $("#BtnCargaEjemplo").click(function() {
             $("#inputNombre").val('Pedro Perez Perez');
             $("#inputRut").val('12345678-9');
+            $("#inputCargasFamiliares").val('2');
             $("#inputEmpresa").val('Empresa Ejemplo SA');
             $("#inputDireccion").val('Camino del exito n° 300');
             $("#inputOcupacion").val('El mejor cargo que existe');
@@ -734,16 +773,31 @@
                 empresa: $("#inputEmpresa").val(),
                 empresadireccion: $("#inputDireccion").val(),
                 cargo: $("#inputOcupacion").val(),
-                sueldobase: $("#inputSueldoBase").val(),
+                sueldobase: addCommas($("#inputSueldoBase").val()),
                 afp: $("#selectAFP").val(),
                 isapre: $("#selectIsapre").val(),
 
-                valorafp: $("#inputSueldoBase").val() * ($("#inputPorcAFP").val() / 100),
-                valorisapre: $("#inputSueldoBase").val() * ($("#inputPorcIsapre").val() / 100),
+                valorafp: addCommas(($("#inputSueldoBase").val() * ($("#inputPorcAFP").val() / 100)).toFixed(3)),
+                valorisapre: addCommas(($("#inputSueldoBase").val() * ($("#inputPorcIsapre").val() / 100)).toFixed(3)),
 
-                gratificacion: $("#inputGratificacion").val(),
-                bonos: $("#inputBono").val(),
-                descuentosbase: $("#inputDescuentos").val()
+                gratificacion: addCommas($("#inputGratificacion").val()),
+                bonos: addCommas($("#inputBono").val()),
+                descuentosbase: addCommas($("#inputDescuentos").val()),
+                cargas: addCommas($("#inputCargasFamiliares").val() * 15000),
+
+                montoliquido: addCommas((
+                    (
+                        parseFloat($("#inputSueldoBase").val()) +
+                        parseFloat($("#inputGratificacion").val()) +
+                        parseFloat($("#inputBono").val()) +
+                        parseFloat(($("#inputCargasFamiliares").val() * 15000))
+                    ) -
+                    (
+                        parseFloat($("#inputDescuentos").val()) +
+                        parseFloat(($("#inputSueldoBase").val() * ($("#inputPorcAFP").val() / 100))) +
+                        parseFloat(($("#inputSueldoBase").val() * ($("#inputPorcIsapre").val() / 100)))
+                    )
+                ).toFixed(0))
             }
 
             console.log(Persona);
