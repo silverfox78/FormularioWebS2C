@@ -363,6 +363,40 @@
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <form class="form-horizontal" role="form">
+
+                                <div class="form-group">
+                                    <label for="inputDiasTrabajados" class="col-sm-3 control-label">Dias Trabajados</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputDiasTrabajados" value="21">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputValorPorDia" class="col-sm-3 control-label">Valor por dia</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputValorPorDia" value="5000">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputHorasFalta" class="col-sm-3 control-label">Horas de falta</label>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="inputHorasFalta" value="0">
+                                            <span class="input-group-addon"> horas </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputHorasExtras" class="col-sm-3 control-label">Horas extras</label>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="inputHorasExtras" value="0">
+                                            <span class="input-group-addon"> horas </span>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -394,7 +428,6 @@
             boostat: 5,
             maxboostedstep: 10
         });
-
 
         var inputPorcAFP = $("#inputPorcAFP").TouchSpin({
             min: 0,
@@ -459,51 +492,195 @@
             maxboostedstep: 1000
         });
 
-
-
-
-
-        var docDefinition = {
-            info: {
-                title: 'Boleta de Pago',
-                author: 'Samuel Barrera',
-                subject: 'Prueba de Boleta de Pago',
-            },
-
-            content: [{
-                    text: 'Boleta de Pago',
-                    style: 'header'
-                },
-
-                'Prueba de boleta de pago...',
-
-                {
-                    text: 'Another text',
-                    style: 'anotherStyle'
-                },
-
-                {
-                    text: 'Multiple styles applied',
-                    style: ['header', 'anotherStyle']
-                }
-            ],
-
-            styles: {
-                header: {
-                    fontSize: 22,
-                    bold: true
-                },
-                anotherStyle: {
-                    italics: true,
-                    alignment: 'right'
-                }
-            }
-        };
-
-        $("#BtnBoleta").click(function() {
-            pdfMake.createPdf(docDefinition).download("BoletaPago.pdf");
+        var inputDiasTrabajados = $("#inputDiasTrabajados").TouchSpin({
+            min: 0,
+            max: 31,
+            step: 1,
+            decimals: 0,
+            boostat: 5,
+            maxboostedstep: 5
         });
 
+        var inputValorPorDia = $("#inputValorPorDia").TouchSpin({
+            min: 0,
+            max: 999999999999999,
+            step: 1,
+            decimals: 0,
+            boostat: 5,
+            maxboostedstep: 1000
+        });
+
+        var inputHorasFalta = $("#inputHorasFalta").TouchSpin({
+            min: 0,
+            max: 999999999999999,
+            step: 1,
+            decimals: 0,
+            boostat: 5,
+            maxboostedstep: 8
+        });
+
+        var inputHorasExtras = $("#inputHorasExtras").TouchSpin({
+            min: 0,
+            max: 999999999999999,
+            step: 1,
+            decimals: 0,
+            boostat: 5,
+            maxboostedstep: 8
+        });
+
+
+
+        function GeneraPdf(dato) {
+            var docDefinition = {
+                info: {
+                    title: 'Boleta de Pago',
+                    author: 'Samuel Barrera',
+                    subject: 'Boleta de Pago',
+                },
+
+                pageSize: 'LETTER',
+
+                pageOrientation: 'portrait',
+
+                pageMargins: [40, 60, 40, 60],
+
+                header: function(currentPage, pageCount, pageSize) {
+                    return [{
+                        text: '',
+                        alignment: (currentPage % 2) ? 'left' : 'right'
+                    }, {
+                        canvas: [{
+                            type: 'rect',
+                            x: 170,
+                            y: 32,
+                            w: pageSize.width - 170,
+                            h: 40
+                        }]
+                    }]
+                },
+
+                background: function(currentPage) {
+                    return {
+                        text: 'Pagina: ' + currentPage,
+                        style: 'small',
+                        margin: [0, 10, 40, 0]
+                    }
+                },
+
+                content: [{
+                        text: 'Boleta de Pago',
+                        style: 'header'
+                    },
+
+                    {
+                        text: '================================',
+                        fontSize: 8,
+                        bold: true,
+                        margin: [0, 0, 0, 20]
+                    },
+
+                    {
+                        text: 'Informacion personal',
+                        margin: [40, 20, 40, 20],
+                        fontSize: 16,
+                        bold: true,
+                        italics: false,
+                        alignment: 'center'
+                    },
+
+                    {
+                        columns: [{
+                            width: '30%',
+                            text: 'Nombre :',
+                            style: 'etiqueta'
+                        }, {
+                            width: '*',
+                            text: dato.nombre
+                        }],
+                        columnGap: 10
+                    },
+
+                    {
+                        text: 'Detalle del Pago',
+                        margin: [40, 40, 40, 20],
+                        fontSize: 16,
+                        bold: true,
+                        italics: false,
+                        alignment: 'center'
+                    },
+
+                    {
+                        layout: 'lightHorizontalLines',
+
+                        table: {
+                            headerRows: 1,
+                            widths: ['60%', '20%', '*'],
+
+                            body: [
+                                ['Detalle', 'Haberes', 'Descuentos'],
+
+                                [{
+                                    text: 'Sueldo Base',
+                                    bold: true
+                                }, '0', '0'],
+
+                                [{
+                                    text: 'Gratificacion Legal',
+                                    bold: true
+                                }, '0', '0'],
+
+                                [{
+                                    text: 'Cotiz. A.F.P',
+                                    bold: true
+                                }, '0', '0'],
+
+                                [{
+                                    text: 'Isapre',
+                                    bold: true
+                                }, '0', '0']
+                            ]
+                        }
+                    }
+                ],
+
+                styles: {
+                    header: {
+                        fontSize: 22,
+                        bold: true
+                    },
+                    anotherStyle: {
+                        italics: true,
+                        alignment: 'right'
+                    },
+
+                    small: {
+                        fontSize: 8,
+                        italics: false,
+                        alignment: 'right'
+                    },
+
+                    etiqueta: {
+                        bold: true,
+                        alignment: 'right'
+                    }
+
+                }
+            };
+
+            pdfMake.createPdf(docDefinition).download("BoletaPago.pdf");
+        }
+
+        $("#BtnBoleta").click(function() {
+            console.log($("#inputNombre").text());
+            console.log($("#inputNombre").val());
+            var Persona = {
+                nombre: $("#inputNombre").val()
+            }
+
+            console.log(Persona);
+
+            GeneraPdf(Persona);
+        });
     });
 </script>
 
