@@ -206,7 +206,7 @@
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp; &nbsp; Limpiar &nbsp; &nbsp;
         </button>
 
-        <button type="button" class="btn btn-success">
+        <button type="button" class="btn btn-success" id="BtnBoleta">
             <span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp; &nbsp; Boleta &nbsp; &nbsp;
         </button>
     </div>
@@ -226,6 +226,12 @@
 
 
         var docDefinition = {
+            info: {
+                title: 'Boleta de Pago',
+                author: 'Samuel Barrera',
+                subject: 'Prueba de Boleta de Pago',
+            },
+
             content: [{
                     text: 'Boleta de Pago',
                     style: 'header'
@@ -251,7 +257,10 @@
             }
         };
 
-        pdfMake.createPdf(docDefinition).download();
+        $("#BtnBoleta").click(function() {
+            pdfMake.createPdf(docDefinition).download("BoletaPago.pdf");
+        });
+
     });
 </script>
 
