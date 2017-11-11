@@ -81,7 +81,7 @@
 
                                 <div class="form-group">
                                     <label for="inputRut" class="col-sm-3 control-label">Rut</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-4">
                                         <input type="text" class="form-control" id="inputRut">
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
 
                                 <div class="form-group">
                                     <label for="selectEstadoCivil" class="col-sm-3 control-label">Estado civil</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-4">
                                         <select class="form-control" id="selectEstadoCivil">
                                           <option value="S" selected>Soltero</option>
                                           <option value="C">Casado</option>
@@ -106,14 +106,14 @@
 
                                 <div class="form-group row">
                                     <label for="inputFechaNacimiento" class="col-sm-3 control-label">Fecha de Nacimiento</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-4">
                                         <input class="form-control" type="date" id="inputFechaNacimiento">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputCargasFamiliares" class="col-sm-3 control-label">Cargas Familiares</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-2">
                                         <input type="text" class="form-control" id="inputCargasFamiliares" value="0">
                                     </div>
                                 </div>
@@ -135,7 +135,7 @@
 
                                 <div class="form-group">
                                     <label for="selectTipoVivienda" class="col-sm-3 control-label">Tipo de vivienda</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-4">
                                         <select class="form-control" id="selectTipoVivienda">
                                                   <option value="P" selected>Propia</option>
                                                   <option value="A">Arriendo</option>
@@ -145,7 +145,7 @@
 
                                 <div class="form-group">
                                     <label for="selectTipoConstruccion" class="col-sm-3 control-label">Tipo Construccion</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-4">
                                         <select class="form-control" id="selectTipoConstruccion">
                                                       <option value="M" selected>Mamposteria</option>
                                                       <option value="MP">Madera o Paja</option>
@@ -158,14 +158,14 @@
 
                                 <div class="form-group">
                                     <label for="inputAnnoConstruccion" class="col-sm-3 control-label">Año Construccion</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-4">
                                         <input type="number" class="form-control" id="inputAnnoConstruccion">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label"></label>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-2">
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked">
@@ -173,7 +173,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-2">
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked="">
@@ -183,14 +183,15 @@
                                     </div>
                                 </div>
 
-
-
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
         <div role="tabpanel" class="tab-pane fade" id="Panel03">
             <br/>
             <div class="panel panel-default">
@@ -199,12 +200,35 @@
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <form class="form-horizontal" role="form">
+
+                                <div class="form-group">
+                                    <label for="selectSalud" class="col-sm-3 control-label">Tipo de Salud</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control" id="selectSalud">
+                                                            <option value="Fonasa" selected="selected">Fonasa</option>
+                                                            <option value="Isapre">Isapre</option>
+                                                            <option value="No posee">No posee</option>
+                                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPorcSalud" class="col-sm-3 control-label">% Cotizacion</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="inputPorcSalud" value="7">
+                                    </div>
+                                </div>
+
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+
         <div role="tabpanel" class="tab-pane fade" id="Panel04">
             <br/>
             <div class="panel panel-default">
@@ -213,12 +237,59 @@
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="selectAFP" class="col-sm-3 control-label">AFP</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control" id="selectAFP">
+                                                                  <option value=" Capital">Capital</option>
+                                                                  <option value="Cuprum" selected>Cuprum</option>
+                                                                  <option value="Habitat">Habitat</option>
+                                                                  <option value="Modelo">Modelo</option>
+                                                                  <option value="PlanVital">PlanVital</option>
+                                                                  <option value="Provida">Provida</option>
+                                                                </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="inputPorcAFP" class="col-sm-3 control-label">% AFP</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="inputPorcAFP" value="10">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="selectIsapre" class="col-sm-3 control-label">Isapre</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control" id="selectIsapre">
+                                                    <option value="Fonasa" selected="selected">Fonasa</option>
+                                                    <option value="Cruz Blanca">Cruz Blanca</option>
+                                                    <option value="Banmedica">Banmedica</option>
+                                                    <option value="Masvida">Masvida</option>
+                                                    <option value="Colmena">Colmena </option>
+                                                    <option value="Vida tres">Vida tres</option>
+                                                    <option value="Consalud">Consalud</option>
+                                                    <option value="Sin previción">Sin previción</option>
+                                                </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPorcIsapre" class="col-sm-3 control-label">% Isapre</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="inputPorcIsapre" value="7">
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
         <div role="tabpanel" class="tab-pane fade" id="Panel05">
             <br/>
             <div class="panel panel-default">
@@ -227,12 +298,63 @@
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="inputEmpresa" class="col-sm-3 control-label">Empresa</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="inputEmpresa">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputDireccion" class="col-sm-3 control-label">Direccion</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputDireccion">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputOcupacion" class="col-sm-3 control-label">Ocupacion</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="inputOcupacion">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputSueldoBase" class="col-sm-3 control-label">Sueldo Base</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputSueldoBase" value="270000">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputBono" class="col-sm-3 control-label">Bonos</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputBono" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputGratificacion" class="col-sm-3 control-label">Gratificacion</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputGratificacion" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputDescuentos" class="col-sm-3 control-label">Descuentos</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputDescuentos" value="0">
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
         <div role="tabpanel" class="tab-pane fade" id="Panel06">
             <br/>
             <div class="panel panel-default">
@@ -264,7 +386,7 @@
 
 <script>
     $(document).ready(function() {
-        var i = $("#inputCargasFamiliares").TouchSpin({
+        var inputCargasFamiliares = $("#inputCargasFamiliares").TouchSpin({
             min: 0,
             max: 100,
             step: 1,
@@ -272,6 +394,72 @@
             boostat: 5,
             maxboostedstep: 10
         });
+
+
+        var inputPorcAFP = $("#inputPorcAFP").TouchSpin({
+            min: 0,
+            max: 100,
+            step: 0.1,
+            decimals: 2,
+            boostat: 5,
+            maxboostedstep: 10
+        });
+
+        var inputPorcIsapre = $("#inputPorcIsapre").TouchSpin({
+            min: 0,
+            max: 100,
+            step: 0.1,
+            decimals: 2,
+            boostat: 5,
+            maxboostedstep: 10
+        });
+
+        var inputPorcSalud = $("#inputPorcSalud").TouchSpin({
+            min: 0,
+            max: 100,
+            step: 0.1,
+            decimals: 2,
+            boostat: 5,
+            maxboostedstep: 10
+        });
+
+        var inputSueldoBase = $("#inputSueldoBase").TouchSpin({
+            min: 0,
+            step: 1,
+            max: 999999999999999,
+            decimals: 0,
+            boostat: 5,
+            maxboostedstep: 10000
+        });
+
+        var inputBono = $("#inputBono").TouchSpin({
+            min: 0,
+            max: 999999999999999,
+            step: 1,
+            decimals: 0,
+            boostat: 5,
+            maxboostedstep: 10000
+        });
+
+        var inputGratificacion = $("#inputGratificacion").TouchSpin({
+            min: 0,
+            max: 999999999999999,
+            step: 1,
+            decimals: 0,
+            boostat: 5,
+            maxboostedstep: 10000
+        });
+
+        var inputDescuentos = $("#inputDescuentos").TouchSpin({
+            min: 0,
+            max: 999999999999999,
+            step: 1,
+            decimals: 0,
+            boostat: 5,
+            maxboostedstep: 1000
+        });
+
+
 
 
 
@@ -286,10 +474,15 @@
                     text: 'Boleta de Pago',
                     style: 'header'
                 },
-                'Prueba de boleta de pago...', {
+
+                'Prueba de boleta de pago...',
+
+                {
                     text: 'Another text',
                     style: 'anotherStyle'
-                }, {
+                },
+
+                {
                     text: 'Multiple styles applied',
                     style: ['header', 'anotherStyle']
                 }
