@@ -24,8 +24,9 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.22.1/js/patternfly.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-touchspin/3.1.2/jquery.bootstrap-touchspin.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.22.1/js/patternfly.min.js"></script>
 </head>
 
 <body>
@@ -95,9 +96,6 @@
                                     </div>
                                 </div>
 
-                                <script>
-                                    $("input[name='inputCargasFamiliares' ] ").TouchSpin();
-                                </script>
                             </form>
                         </div>
                     </div>
@@ -188,5 +186,11 @@
         </button>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $("input[name='inputCargasFamiliares' ] ").TouchSpin();
+    });
+</script>
 
 </html>
