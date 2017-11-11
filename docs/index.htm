@@ -47,30 +47,55 @@
         <div role="tabpanel" class="tab-pane fade in active" id="Panel01">
             <br/>
             <div class="panel panel-default">
+                <div class="panel-heading">Ingreso de datos personales</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label for="inputEmail1" class="col-sm-2 control-label">Email</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail1">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword1" class="col-sm-2 control-label">Password</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword1">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                <input type="checkbox"> Remember me
-                              </label>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <form class="form-horizontal" role="form">
+
+                                <div class="form-group">
+                                    <label for="inputRut" class="col-sm-2 control-label">Rut</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputRut">
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="form-group">
+                                    <label for="inputNombre" class="col-sm-2 control-label">Nombre</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputNombre">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="selectEstadoCivil">Estado civil</label>
+                                    <select class="form-control" id="selectEstadoCivil">
+                                          <option value="S" selected>Soltero</option>
+                                          <option value="C">Casado</option>
+                                          <option value="V">Viudo</option>
+                                        </select>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputFechaNacimiento" class="col-2 col-form-label">Fecha de Nacimiento</label>
+                                    <div class="col-10">
+                                        <input class="form-control" type="date" id="inputFechaNacimiento">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputCargasFamiliares" class="col-sm-2 control-label">Cargas Familiares</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputCargasFamiliares">
+                                    </div>
+                                </div>
+
+                                <script>
+                                    $("input[name='inputCargasFamiliares']").TouchSpin();
+                                </script>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
